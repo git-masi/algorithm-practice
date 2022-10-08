@@ -29,27 +29,19 @@ func TestDoublyLinkedListNode(t *testing.T) {
 }
 
 func TestDoublyLinkedListInsertMethod(t *testing.T) {
-	t.Run("the `head` property should be `nil` by default", func(t *testing.T) {
+	t.Run("Properties should have zero values for their type by default", func(t *testing.T) {
 		dll := DoublyLinkedList{}
 
 		if dll.head != nil {
-			t.Errorf("expected `nil` got %v", dll.head)
+			t.Errorf("want `nil` got %v", dll.head)
 		}
-	})
-
-	t.Run("the `tail` property should be `nil` by default", func(t *testing.T) {
-		dll := DoublyLinkedList{}
 
 		if dll.tail != nil {
-			t.Errorf("expected `nil` got %v", dll.tail)
+			t.Errorf("want `nil` got %v", dll.tail)
 		}
-	})
-
-	t.Run("the `size` property should be `0` by default", func(t *testing.T) {
-		dll := DoublyLinkedList{}
 
 		if dll.size != 0 {
-			t.Errorf("expected `0` got %v", dll.size)
+			t.Errorf("want `0` got %v", dll.size)
 		}
 	})
 
