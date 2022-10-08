@@ -28,7 +28,7 @@ func TestDoublyLinkedListNode(t *testing.T) {
 	})
 }
 
-func TestDoublyLinkedList(t *testing.T) {
+func TestDoublyLinkedListInsertMethod(t *testing.T) {
 	t.Run("the `head` property should be `nil` by default", func(t *testing.T) {
 		dll := DoublyLinkedList{}
 
