@@ -143,7 +143,7 @@ func TestDoublyLinkedListRemoveMethod(t *testing.T) {
 		}
 	})
 
-	t.Run("It should remove the tail node", func(t *testing.T) {
+	t.Run("It should remove the tail node and promote a new tail node", func(t *testing.T) {
 		dll := DoublyLinkedList{}
 		dll.Insert(42)
 		dll.Insert(9001)
