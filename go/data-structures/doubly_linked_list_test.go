@@ -188,6 +188,21 @@ func TestDoublyLinkedListRemoveMethod(t *testing.T) {
 			t.Errorf("want 2 got %d", dll.size)
 		}
 	})
+
+	t.Run("It should do nothing if attempting to remove a `nil` node", func(t *testing.T) {
+		dll := DoublyLinkedList{}
+		head := 42
+		dll.Insert(head)
+		dll.Remove(nil)
+
+		if dll.head.value != head {
+			t.Errorf("want %v got %v", head, dll.head.value)
+		}
+
+		if dll.tail.value != head {
+			t.Errorf("want %v got %v", head, dll.tail.value)
+		}
+	})
 }
 
 func TestDoublyLinkedListFindMethod(t *testing.T) {

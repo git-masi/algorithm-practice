@@ -34,6 +34,10 @@ func (dll *DoublyLinkedList) Insert(value int) *DoublyLinkedListNode {
 }
 
 func (dll *DoublyLinkedList) Remove(node *DoublyLinkedListNode) {
+	if node == nil {
+		return
+	}
+
 	curr := dll.head
 
 	for {
