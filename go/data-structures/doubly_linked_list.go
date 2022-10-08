@@ -27,6 +27,8 @@ func (dll *DoublyLinkedList) Insert(value int) {
 		node.prev = dll.tail
 		dll.tail = node
 	}
+
+	dll.size++
 }
 
 func (dll *DoublyLinkedList) Remove(node *DoublyLinkedListNode) {
