@@ -61,6 +61,10 @@ func TestDoublyLinkedListInsertMethod(t *testing.T) {
 		if dll.head.value != head {
 			t.Errorf("expected %d got %d", head, dll.head.value)
 		}
+
+		if dll.tail.value != head {
+			t.Errorf("expected %d got %d", head, dll.tail.value)
+		}
 	})
 
 	t.Run("it should add a new `tail` when the second node is inserted", func(t *testing.T) {

@@ -17,6 +17,7 @@ func (dll *DoublyLinkedList) Insert(value int) {
 
 	if dll.head == nil {
 		dll.head = node
+		dll.tail = node
 	} else if dll.tail == nil {
 		dll.head.next = node
 		dll.tail = node
