@@ -133,6 +133,10 @@ func TestDoublyLinkedListRemoveMethod(t *testing.T) {
 		if dll.head.value != tail {
 			t.Errorf("expected %d got %d", tail, dll.head.value)
 		}
+
+		if dll.size != 1 {
+			t.Errorf("want 1 got %d", dll.size)
+		}
 	})
 
 	t.Run("It should remove the tail node", func(t *testing.T) {
@@ -143,6 +147,10 @@ func TestDoublyLinkedListRemoveMethod(t *testing.T) {
 
 		if dll.tail != nil {
 			t.Errorf("expected `nil` got %v", dll.tail)
+		}
+
+		if dll.size != 1 {
+			t.Errorf("want 1 got %d", dll.size)
 		}
 	})
 
@@ -161,6 +169,10 @@ func TestDoublyLinkedListRemoveMethod(t *testing.T) {
 
 		if dll.tail.prev != head {
 			t.Errorf("expected %v got %v", head, dll.tail.prev)
+		}
+
+		if dll.size != 2 {
+			t.Errorf("want 2 got %d", dll.size)
 		}
 	})
 }

@@ -34,9 +34,11 @@ func (dll *DoublyLinkedList) Insert(value int) {
 func (dll *DoublyLinkedList) Remove(node *DoublyLinkedListNode) {
 	if node == dll.head {
 		dll.head = dll.head.next
+		dll.size--
 	} else if node == dll.tail {
 		dll.tail.prev.next = nil
 		dll.tail = nil
+		dll.size--
 	} else {
 		curr := dll.head
 
@@ -48,6 +50,7 @@ func (dll *DoublyLinkedList) Remove(node *DoublyLinkedListNode) {
 			if curr == node {
 				curr.prev.next = curr.next
 				curr.next.prev = curr.prev
+				dll.size--
 				return
 			}
 
