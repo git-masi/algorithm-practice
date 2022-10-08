@@ -12,7 +12,7 @@ type DoublyLinkedList struct {
 	size int
 }
 
-func (dll *DoublyLinkedList) Insert(value int) {
+func (dll *DoublyLinkedList) Insert(value int) *DoublyLinkedListNode {
 	node := &DoublyLinkedListNode{value: value}
 
 	if dll.head == nil {
@@ -29,6 +29,8 @@ func (dll *DoublyLinkedList) Insert(value int) {
 	}
 
 	dll.size++
+
+	return node
 }
 
 func (dll *DoublyLinkedList) Remove(node *DoublyLinkedListNode) {

@@ -112,6 +112,19 @@ func TestDoublyLinkedListInsertMethod(t *testing.T) {
 			t.Errorf("want 3 got %d", dll.size)
 		}
 	})
+
+	t.Run("It should return the inserted node", func(t *testing.T) {
+		dll := DoublyLinkedList{}
+		tail := 8
+		dll.Insert(42)
+		dll.Insert(9001)
+		dll.Insert(1337)
+		node := dll.Insert(tail)
+
+		if node.value != tail {
+			t.Errorf("expected %d got %d", tail, node.value)
+		}
+	})
 }
 
 func TestDoublyLinkedListRemoveMethod(t *testing.T) {
