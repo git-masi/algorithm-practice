@@ -28,3 +28,28 @@ func (dll *DoublyLinkedList) Insert(value int) {
 		dll.tail = node
 	}
 }
+
+func (dll *DoublyLinkedList) Remove(node *DoublyLinkedListNode) {
+	if node == dll.head {
+		dll.head = dll.head.next
+	} else if node == dll.tail {
+		dll.tail.prev.next = nil
+		dll.tail = nil
+	} else {
+		curr := dll.head
+
+		for {
+			if curr == nil {
+				return
+			}
+
+			if curr == node {
+				curr.prev.next = curr.next
+				curr.next.prev = curr.prev
+				return
+			}
+
+			curr = curr.next
+		}
+	}
+}

@@ -109,3 +109,46 @@ func TestDoublyLinkedListInsertMethod(t *testing.T) {
 		}
 	})
 }
+
+func TestDoublyLinkedListRemoveMethod(t *testing.T) {
+	t.Run("It should remove the head node and promote a new head node", func(t *testing.T) {
+		dll := DoublyLinkedList{}
+		tail := 9001
+		dll.Insert(42)
+		dll.Insert(tail)
+		dll.Remove(dll.head)
+
+		if dll.head.value != tail {
+			t.Errorf("expected %d got %d", tail, dll.head.value)
+		}
+	})
+
+	t.Run("It should remove the tail node", func(t *testing.T) {
+		dll := DoublyLinkedList{}
+		dll.Insert(42)
+		dll.Insert(9001)
+		dll.Remove(dll.tail)
+
+		if dll.tail != nil {
+			t.Errorf("expected `nil` got %v", dll.tail)
+		}
+	})
+
+	t.Run("It should update `next` and `prev` values", func(t *testing.T) {
+		dll := DoublyLinkedList{}
+		dll.Insert(42)
+		dll.Insert(9001)
+		dll.Insert(1337)
+		head := dll.head
+		tail := dll.tail
+		dll.Remove(head.next)
+
+		if dll.head.next != tail {
+			t.Errorf("expected %v got %v", tail, dll.head.next)
+		}
+
+		if dll.tail.prev != head {
+			t.Errorf("expected %v got %v", head, dll.tail.prev)
+		}
+	})
+}
