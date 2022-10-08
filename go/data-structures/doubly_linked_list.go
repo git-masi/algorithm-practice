@@ -32,29 +32,34 @@ func (dll *DoublyLinkedList) Insert(value int) {
 }
 
 func (dll *DoublyLinkedList) Remove(node *DoublyLinkedListNode) {
-	if node == dll.head {
-		dll.head = dll.head.next
-		dll.size--
-	} else if node == dll.tail {
-		dll.tail.prev.next = nil
-		dll.tail = nil
-		dll.size--
-	} else {
-		curr := dll.head
+	curr := dll.head
 
-		for {
-			if curr == nil {
-				return
-			}
-
-			if curr == node {
-				curr.prev.next = curr.next
-				curr.next.prev = curr.prev
-				dll.size--
-				return
-			}
-
-			curr = curr.next
+	for {
+		if curr == nil {
+			return
 		}
+
+		if curr == node {
+			if curr.prev != nil {
+				curr.prev.next = curr.next
+			}
+
+			if curr.next != nil {
+				curr.next.prev = curr.prev
+			}
+
+			if curr == dll.head {
+				dll.head = curr.next
+			}
+
+			if curr == dll.tail {
+				dll.tail = curr.prev
+			}
+
+			dll.size--
+			return
+		}
+
+		curr = curr.next
 	}
 }
