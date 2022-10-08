@@ -176,3 +176,36 @@ func TestDoublyLinkedListRemoveMethod(t *testing.T) {
 		}
 	})
 }
+
+func TestDoublyLinkedListFindMethod(t *testing.T) {
+	t.Run("It should return `nil` if there are no nodes in the list", func(t *testing.T) {
+		dll := DoublyLinkedList{}
+		got := dll.Find(42)
+
+		if got != nil {
+			t.Errorf("got %v want `nil`", got)
+		}
+	})
+
+	t.Run("It should return `nil` if a node with the specified value can't be found", func(t *testing.T) {
+		dll := DoublyLinkedList{}
+		dll.Insert(42)
+		got := dll.Find(1337)
+
+		if got != nil {
+			t.Errorf("got %v want `nil`", got)
+		}
+	})
+
+	t.Run("It should return the node with the specified value", func(t *testing.T) {
+		dll := DoublyLinkedList{}
+		dll.Insert(42)
+		dll.Insert(9001)
+		dll.Insert(1337)
+		got := dll.Find(9001)
+
+		if got != dll.head.next {
+			t.Errorf("got %v want %v", got, dll.head.next)
+		}
+	})
+}

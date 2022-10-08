@@ -63,3 +63,19 @@ func (dll *DoublyLinkedList) Remove(node *DoublyLinkedListNode) {
 		curr = curr.next
 	}
 }
+
+func (dll *DoublyLinkedList) Find(value int) *DoublyLinkedListNode {
+	curr := dll.head
+
+	for {
+		if curr == nil {
+			return nil
+		}
+
+		if curr.value == value {
+			return curr
+		}
+
+		curr = curr.next
+	}
+}
