@@ -33,31 +33,23 @@ func numIslands(m [][]int) int {
 		seen[s] = s
 
 		// top
-		if c.row > 0 {
-			if m[c.row-1][c.col] == 1 {
-				traverse(Coordinates{row: c.row - 1, col: c.col})
-			}
+		if c.row > 0 && m[dec(c.row)][c.col] == 1 {
+			traverse(Coordinates{row: dec(c.row), col: c.col})
 		}
 
 		// right
-		if c.col+1 < len(m[0]) {
-			if m[c.row][c.col+1] == 1 {
-				traverse(Coordinates{row: c.row, col: c.col + 1})
-			}
+		if c.col+1 < len(m[0]) && m[c.row][inc(c.col)] == 1 {
+			traverse(Coordinates{row: c.row, col: inc(c.col)})
 		}
 
 		// bottom
-		if c.row+1 < len(m) {
-			if m[c.row+1][c.col] == 1 {
-				traverse(Coordinates{row: c.row + 1, col: c.col})
-			}
+		if c.row+1 < len(m) && m[inc(c.row)][c.col] == 1 {
+			traverse(Coordinates{row: inc(c.row), col: c.col})
 		}
 
 		// left
-		if c.col > 0 {
-			if m[c.row][c.col-1] == 1 {
-				traverse(Coordinates{row: c.row, col: c.col - 1})
-			}
+		if c.col > 0 && m[c.row][dec(c.col)] == 1 {
+			traverse(Coordinates{row: c.row, col: dec(c.col)})
 		}
 	}
 
@@ -74,4 +66,12 @@ func numIslands(m [][]int) int {
 	}
 
 	return count
+}
+
+func inc(num int) int {
+	return num + 1
+}
+
+func dec(num int) int {
+	return num - 1
 }
