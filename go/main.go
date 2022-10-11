@@ -14,9 +14,9 @@ func main() {
 }
 
 func NewProblemAttempt() {
-	r := flag.String("source", "", "The name of the resource where the problem comes from (e.g. grokking)")
-	p := flag.String("prob", "", "The name of the problem")
-	f := flag.String("file", "", "The name of a file if different from prob")
+	r := flag.String("s", "", "The name of the source where the problem comes from (e.g. grokking)")
+	p := flag.String("p", "", "The name of the problem")
+	f := flag.String("f", "", "The name of a file if different from prob")
 
 	flag.Parse()
 
@@ -62,7 +62,7 @@ func Test(t *testing.T) {
 		//
 	})
 }
-			`),
+`),
 		0644,
 	)
 
@@ -78,7 +78,7 @@ func Test(t *testing.T) {
 // func () {
 //	//
 // }
-			`),
+`),
 		0644,
 	)
 
