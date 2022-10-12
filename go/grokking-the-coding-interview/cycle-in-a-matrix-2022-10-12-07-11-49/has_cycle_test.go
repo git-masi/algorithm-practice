@@ -51,4 +51,20 @@ func TestHasCycle(t *testing.T) {
 			t.Errorf("got %t want %t", got, want)
 		}
 	})
+
+	t.Run("It should return 'true' if there are multiple islands and only one has cycle", func(t *testing.T) {
+		got := hasCycle(Matrix{
+			{0, 0, 0, 0, 0, 0},
+			{0, 1, 1, 0, 0, 0},
+			{0, 1, 0, 1, 0, 0},
+			{0, 0, 1, 1, 0, 0},
+			{0, 0, 0, 0, 1, 1},
+			{0, 0, 0, 1, 1, 1},
+		})
+		want := true
+
+		if got != want {
+			t.Errorf("got %t want %t", got, want)
+		}
+	})
 }

@@ -8,6 +8,7 @@ func hasCycle(m Matrix) bool {
 	}
 
 	var trav func(row, col, prow, pcol int) bool
+	result := false
 
 	trav = func(row, col, prow, pcol int) bool {
 		m[row][col] = 2
@@ -81,16 +82,12 @@ func hasCycle(m Matrix) bool {
 	}
 
 	for row, sub := range m {
-		for col := range sub {
-			if m[row][col] == 1 {
-				v := trav(row, col, 0, 0)
-
-				if !v {
-					return false
-				}
+		for col, el := range sub {
+			if el == 1 {
+				result = result || trav(row, col, 0, 0)
 			}
 		}
 	}
 
-	return true
+	return result
 }
