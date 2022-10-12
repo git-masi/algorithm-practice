@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"testing"
 	"time"
@@ -120,21 +121,33 @@ func assertInt(got int, want int, t *testing.T) {
 var recursiveResult int
 var iterativeResult int
 
-func BenchmarkNumIslandsRecursive(b *testing.B) {
-	m := createMatrix(1000)
+var sizes map[int]Matrix = map[int]Matrix{
+	1:      createMatrix(1),
+	10:     createMatrix(10),
+	100:    createMatrix(100),
+	1_000:  createMatrix(1_000),
+	10_000: createMatrix(10_000),
+}
 
-	for i := 0; i < b.N; i++ {
-		r := numIslandsRecursive(m)
-		recursiveResult = r
+func BenchmarkNumIslandsRecursive(b *testing.B) {
+	for s, m := range sizes {
+		b.Run(fmt.Sprintf("Matrix size: %d", s), func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				r := numIslandsRecursive(m)
+				recursiveResult = r
+			}
+		})
 	}
 }
 
 func BenchmarkNumIslandsIterative(b *testing.B) {
-	m := createMatrix(1000)
-
-	for i := 0; i < b.N; i++ {
-		r := numIslandsIterative(m)
-		iterativeResult = r
+	for s, m := range sizes {
+		b.Run(fmt.Sprintf("Matrix size: %d", s), func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				r := numIslandsIterative(m)
+				iterativeResult = r
+			}
+		})
 	}
 }
 
