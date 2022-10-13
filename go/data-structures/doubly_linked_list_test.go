@@ -32,16 +32,16 @@ func TestDoublyLinkedListInsertMethod(t *testing.T) {
 	t.Run("Properties should have zero values for their type by default", func(t *testing.T) {
 		dll := DoublyLinkedList{}
 
-		if dll.head != nil {
-			t.Errorf("want `nil` got %v", dll.head)
+		if dll.Head != nil {
+			t.Errorf("want `nil` got %v", dll.Head)
 		}
 
-		if dll.tail != nil {
-			t.Errorf("want `nil` got %v", dll.tail)
+		if dll.Tail != nil {
+			t.Errorf("want `nil` got %v", dll.Tail)
 		}
 
-		if dll.size != 0 {
-			t.Errorf("want `0` got %v", dll.size)
+		if dll.Size != 0 {
+			t.Errorf("want `0` got %v", dll.Size)
 		}
 	})
 
@@ -50,16 +50,16 @@ func TestDoublyLinkedListInsertMethod(t *testing.T) {
 		head := 42
 		dll.Insert(42)
 
-		if dll.head.value != head {
-			t.Errorf("expected %d got %d", head, dll.head.value)
+		if dll.Head.value != head {
+			t.Errorf("expected %d got %d", head, dll.Head.value)
 		}
 
-		if dll.tail.value != head {
-			t.Errorf("expected %d got %d", head, dll.tail.value)
+		if dll.Tail.value != head {
+			t.Errorf("expected %d got %d", head, dll.Tail.value)
 		}
 
-		if dll.size != 1 {
-			t.Errorf("want 1 got %d", dll.size)
+		if dll.Size != 1 {
+			t.Errorf("want 1 got %d", dll.Size)
 		}
 	})
 
@@ -70,20 +70,20 @@ func TestDoublyLinkedListInsertMethod(t *testing.T) {
 		dll.Insert(head)
 		dll.Insert(tail)
 
-		if dll.tail.value != tail {
-			t.Errorf("expected %d got %d", tail, dll.tail.value)
+		if dll.Tail.value != tail {
+			t.Errorf("expected %d got %d", tail, dll.Tail.value)
 		}
 
-		if dll.head.next.value != tail {
-			t.Errorf("expected %d got %d", tail, dll.head.next.value)
+		if dll.Head.next.value != tail {
+			t.Errorf("expected %d got %d", tail, dll.Head.next.value)
 		}
 
-		if dll.tail.prev.value != head {
-			t.Errorf("expected %d got %d", head, dll.tail.prev.value)
+		if dll.Tail.prev.value != head {
+			t.Errorf("expected %d got %d", head, dll.Tail.prev.value)
 		}
 
-		if dll.size != 2 {
-			t.Errorf("want 2 got %d", dll.size)
+		if dll.Size != 2 {
+			t.Errorf("want 2 got %d", dll.Size)
 		}
 	})
 
@@ -96,20 +96,20 @@ func TestDoublyLinkedListInsertMethod(t *testing.T) {
 		dll.Insert(prev)
 		dll.Insert(tail)
 
-		if dll.tail.value != tail {
-			t.Errorf("expected %d got %d", tail, dll.tail.value)
+		if dll.Tail.value != tail {
+			t.Errorf("expected %d got %d", tail, dll.Tail.value)
 		}
 
-		if dll.head.next.value != prev {
-			t.Errorf("expected %d got %d", prev, dll.head.next.value)
+		if dll.Head.next.value != prev {
+			t.Errorf("expected %d got %d", prev, dll.Head.next.value)
 		}
 
-		if dll.tail.prev.value != prev {
-			t.Errorf("expected %d got %d", prev, dll.tail.prev.value)
+		if dll.Tail.prev.value != prev {
+			t.Errorf("expected %d got %d", prev, dll.Tail.prev.value)
 		}
 
-		if dll.size != 3 {
-			t.Errorf("want 3 got %d", dll.size)
+		if dll.Size != 3 {
+			t.Errorf("want 3 got %d", dll.Size)
 		}
 	})
 
@@ -133,18 +133,18 @@ func TestDoublyLinkedListRemoveMethod(t *testing.T) {
 		tail := 9001
 		dll.Insert(42)
 		dll.Insert(tail)
-		dll.Remove(dll.head)
+		dll.Remove(dll.Head)
 
-		if dll.head.value != tail {
-			t.Errorf("expected %d got %d", tail, dll.head.value)
+		if dll.Head.value != tail {
+			t.Errorf("expected %d got %d", tail, dll.Head.value)
 		}
 
-		if dll.head.prev != nil {
-			t.Errorf("want `nil` got %v", dll.head.prev)
+		if dll.Head.prev != nil {
+			t.Errorf("want `nil` got %v", dll.Head.prev)
 		}
 
-		if dll.size != 1 {
-			t.Errorf("want 1 got %d", dll.size)
+		if dll.Size != 1 {
+			t.Errorf("want 1 got %d", dll.Size)
 		}
 	})
 
@@ -152,18 +152,18 @@ func TestDoublyLinkedListRemoveMethod(t *testing.T) {
 		dll := DoublyLinkedList{}
 		dll.Insert(42)
 		dll.Insert(9001)
-		dll.Remove(dll.tail)
+		dll.Remove(dll.Tail)
 
-		if dll.tail != dll.head {
-			t.Errorf("want %v got %v", dll.head, dll.tail)
+		if dll.Tail != dll.Head {
+			t.Errorf("want %v got %v", dll.Head, dll.Tail)
 		}
 
-		if dll.tail.next != nil {
-			t.Errorf("want `nil` got %v", dll.tail.next)
+		if dll.Tail.next != nil {
+			t.Errorf("want `nil` got %v", dll.Tail.next)
 		}
 
-		if dll.size != 1 {
-			t.Errorf("want 1 got %d", dll.size)
+		if dll.Size != 1 {
+			t.Errorf("want 1 got %d", dll.Size)
 		}
 	})
 
@@ -172,20 +172,20 @@ func TestDoublyLinkedListRemoveMethod(t *testing.T) {
 		dll.Insert(42)
 		dll.Insert(9001)
 		dll.Insert(1337)
-		head := dll.head
-		tail := dll.tail
+		head := dll.Head
+		tail := dll.Tail
 		dll.Remove(head.next)
 
-		if dll.head.next != tail {
-			t.Errorf("expected %v got %v", tail, dll.head.next)
+		if dll.Head.next != tail {
+			t.Errorf("expected %v got %v", tail, dll.Head.next)
 		}
 
-		if dll.tail.prev != head {
-			t.Errorf("expected %v got %v", head, dll.tail.prev)
+		if dll.Tail.prev != head {
+			t.Errorf("expected %v got %v", head, dll.Tail.prev)
 		}
 
-		if dll.size != 2 {
-			t.Errorf("want 2 got %d", dll.size)
+		if dll.Size != 2 {
+			t.Errorf("want 2 got %d", dll.Size)
 		}
 	})
 
@@ -195,12 +195,12 @@ func TestDoublyLinkedListRemoveMethod(t *testing.T) {
 		dll.Insert(head)
 		dll.Remove(nil)
 
-		if dll.head.value != head {
-			t.Errorf("want %v got %v", head, dll.head.value)
+		if dll.Head.value != head {
+			t.Errorf("want %v got %v", head, dll.Head.value)
 		}
 
-		if dll.tail.value != head {
-			t.Errorf("want %v got %v", head, dll.tail.value)
+		if dll.Tail.value != head {
+			t.Errorf("want %v got %v", head, dll.Tail.value)
 		}
 	})
 }
@@ -232,8 +232,8 @@ func TestDoublyLinkedListFindMethod(t *testing.T) {
 		dll.Insert(1337)
 		got := dll.Find(9001)
 
-		if got != dll.head.next {
-			t.Errorf("got %v want %v", got, dll.head.next)
+		if got != dll.Head.next {
+			t.Errorf("got %v want %v", got, dll.Head.next)
 		}
 	})
 }
