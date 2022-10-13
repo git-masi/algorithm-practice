@@ -1,4 +1,4 @@
-package datastructures
+package doublylinkedlist
 
 type DoublyLinkedListNode struct {
 	next  *DoublyLinkedListNode
