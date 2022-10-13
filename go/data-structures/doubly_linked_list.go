@@ -7,28 +7,28 @@ type DoublyLinkedListNode struct {
 }
 
 type DoublyLinkedList struct {
-	head *DoublyLinkedListNode
-	tail *DoublyLinkedListNode
-	size int
+	Head *DoublyLinkedListNode
+	Tail *DoublyLinkedListNode
+	Size int
 }
 
 func (dll *DoublyLinkedList) Insert(value int) *DoublyLinkedListNode {
 	node := &DoublyLinkedListNode{value: value}
 
-	if dll.head == nil {
-		dll.head = node
-		dll.tail = node
-	} else if dll.tail == nil {
-		dll.head.next = node
-		dll.tail = node
-		node.prev = dll.head
+	if dll.Head == nil {
+		dll.Head = node
+		dll.Tail = node
+	} else if dll.Tail == nil {
+		dll.Head.next = node
+		dll.Tail = node
+		node.prev = dll.Head
 	} else {
-		dll.tail.next = node
-		node.prev = dll.tail
-		dll.tail = node
+		dll.Tail.next = node
+		node.prev = dll.Tail
+		dll.Tail = node
 	}
 
-	dll.size++
+	dll.Size++
 
 	return node
 }
@@ -38,7 +38,7 @@ func (dll *DoublyLinkedList) Remove(node *DoublyLinkedListNode) {
 		return
 	}
 
-	curr := dll.head
+	curr := dll.Head
 
 	for {
 		if curr == nil {
@@ -54,15 +54,15 @@ func (dll *DoublyLinkedList) Remove(node *DoublyLinkedListNode) {
 				curr.next.prev = curr.prev
 			}
 
-			if curr == dll.head {
-				dll.head = curr.next
+			if curr == dll.Head {
+				dll.Head = curr.next
 			}
 
-			if curr == dll.tail {
-				dll.tail = curr.prev
+			if curr == dll.Tail {
+				dll.Tail = curr.prev
 			}
 
-			dll.size--
+			dll.Size--
 			return
 		}
 
@@ -71,7 +71,7 @@ func (dll *DoublyLinkedList) Remove(node *DoublyLinkedListNode) {
 }
 
 func (dll *DoublyLinkedList) Find(value int) *DoublyLinkedListNode {
-	curr := dll.head
+	curr := dll.Head
 
 	for {
 		if curr == nil {
