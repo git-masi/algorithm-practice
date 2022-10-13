@@ -18,10 +18,6 @@ func (dll *DoublyLinkedList) Insert(value int) *DoublyLinkedListNode {
 	if dll.Head == nil {
 		dll.Head = node
 		dll.Tail = node
-	} else if dll.Tail == nil {
-		dll.Head.next = node
-		dll.Tail = node
-		node.prev = dll.Head
 	} else {
 		dll.Tail.next = node
 		node.prev = dll.Tail

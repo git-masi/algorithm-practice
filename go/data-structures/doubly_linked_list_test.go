@@ -28,7 +28,7 @@ func TestDoublyLinkedListNode(t *testing.T) {
 	})
 }
 
-func TestDoublyLinkedListInsertMethod(t *testing.T) {
+func TestDoublyLinkedListInsert(t *testing.T) {
 	t.Run("Properties should have zero values for their type by default", func(t *testing.T) {
 		dll := DoublyLinkedList{}
 
@@ -127,7 +127,7 @@ func TestDoublyLinkedListInsertMethod(t *testing.T) {
 	})
 }
 
-func TestDoublyLinkedListRemoveMethod(t *testing.T) {
+func TestDoublyLinkedListRemove(t *testing.T) {
 	t.Run("It should remove the current head node and promote a new head node", func(t *testing.T) {
 		dll := DoublyLinkedList{}
 		tail := 9001
@@ -205,7 +205,7 @@ func TestDoublyLinkedListRemoveMethod(t *testing.T) {
 	})
 }
 
-func TestDoublyLinkedListFindMethod(t *testing.T) {
+func TestDoublyLinkedListFind(t *testing.T) {
 	t.Run("It should return `nil` if there are no nodes in the list", func(t *testing.T) {
 		dll := DoublyLinkedList{}
 		got := dll.Find(42)
