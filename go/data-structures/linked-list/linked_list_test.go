@@ -1,6 +1,9 @@
 package linkedlist
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestLinkedListNode(t *testing.T) {
 	t.Run("Properties should have zero values by default", func(t *testing.T) {
@@ -79,6 +82,23 @@ func TestLinkedListInsert(t *testing.T) {
 		assertNodeValue(t, *l.Tail, tail)
 
 		assertSize(t, l, size)
+	})
+}
+
+func TestLinkedListToSlice(t *testing.T) {
+	t.Run("It should return a slice of linked list values", func(t *testing.T) {
+		want := []int{1, 2, 3, 4}
+		ll := LinkedList{}
+
+		for _, v := range want {
+			ll.Insert(v)
+		}
+
+		got := ll.ToSlice()
+
+		if !reflect.DeepEqual(want, got) {
+			t.Errorf("want %v, got %v ", want, got)
+		}
 	})
 }
 

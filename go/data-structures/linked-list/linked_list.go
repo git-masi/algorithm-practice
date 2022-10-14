@@ -11,16 +11,34 @@ type LinkedList struct {
 	Size int
 }
 
-func (l *LinkedList) Insert(v int) {
+func (ll *LinkedList) Insert(v int) {
 	node := &LinkedListNode{Value: v}
 
-	if l.Head == nil {
-		l.Head = node
-		l.Tail = node
+	if ll.Head == nil {
+		ll.Head = node
+		ll.Tail = node
 	} else {
-		l.Tail.Next = node
-		l.Tail = node
+		ll.Tail.Next = node
+		ll.Tail = node
 	}
 
-	l.Size++
+	ll.Size++
+}
+
+func (ll LinkedList) ToSlice() []int {
+	values := []int{}
+
+	curr := ll.Head
+
+	for {
+		if curr == nil {
+			break
+		}
+
+		values = append(values, curr.Value)
+
+		curr = curr.Next
+	}
+
+	return values
 }
