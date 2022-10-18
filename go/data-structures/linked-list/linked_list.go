@@ -25,6 +25,24 @@ func (ll *LinkedList) Insert(v int) {
 	ll.Size++
 }
 
+func (ll *LinkedList) RemoveHead() *Node {
+	if ll.Head == nil {
+		return nil
+	}
+
+	head := ll.Head
+	next := head.Next
+
+	if head == ll.Tail {
+		ll.Tail = nil
+	}
+
+	head.Next = nil
+	ll.Head = next
+
+	return head
+}
+
 func (ll LinkedList) ToSlice() []int {
 	values := []int{}
 

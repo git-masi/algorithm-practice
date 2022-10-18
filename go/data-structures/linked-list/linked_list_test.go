@@ -102,6 +102,84 @@ func TestLinkedListToSlice(t *testing.T) {
 	})
 }
 
+func TestLinkedListRemoveHead(t *testing.T) {
+	t.Run("It should not remove the head of an empty list", func(t *testing.T) {
+		ll := LinkedList{}
+
+		ll.RemoveHead()
+
+		if ll.Head != nil {
+			t.Error("An empty list should be unchanged")
+		}
+	})
+
+	t.Run("I should remove the head and the list should be empty", func(t *testing.T) {
+		ll := LinkedList{}
+
+		ll.Insert(42)
+
+		want := ll.Head
+		got := ll.RemoveHead()
+
+		if got != want {
+			t.Errorf("got %v, want %v", got, want)
+		}
+
+		if ll.Head != nil || ll.Tail != nil {
+			t.Error("Expected head and tail to both be 'nil'")
+		}
+	})
+
+	t.Run("It should remove the head and the new head and tail should be equal", func(t *testing.T) {
+		ll := LinkedList{}
+		tail := 1337
+
+		ll.Insert(42)
+		ll.Insert(tail)
+
+		want := ll.Head
+		got := ll.RemoveHead()
+
+		if got.Next != nil {
+			t.Errorf("Expected the Next value to be 'nil'")
+		}
+
+		if got != want {
+			t.Errorf("got %v, want %v", got, want)
+		}
+
+		assertNodeValue(t, *ll.Head, tail)
+
+		assertNodeValue(t, *ll.Tail, tail)
+	})
+
+	t.Run("It should remove the head and promote a new head", func(t *testing.T) {
+		ll := LinkedList{}
+		head := 42
+		next := 9001
+		tail := 1337
+
+		ll.Insert(head)
+		ll.Insert(next)
+		ll.Insert(tail)
+
+		want := ll.Head
+		got := ll.RemoveHead()
+
+		if got.Next != nil {
+			t.Errorf("Expected the Next value to be 'nil'")
+		}
+
+		if got != want {
+			t.Errorf("got %v, want %v", got, want)
+		}
+
+		assertNodeValue(t, *ll.Head, next)
+
+		assertNodeValue(t, *ll.Tail, tail)
+	})
+}
+
 func assertNodeValue(t *testing.T, n Node, v int) {
 	if n.Value != v {
 		t.Errorf("got %d, want %d", n.Value, v)
