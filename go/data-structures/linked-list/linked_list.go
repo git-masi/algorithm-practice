@@ -42,3 +42,19 @@ func (ll LinkedList) ToSlice() []int {
 
 	return values
 }
+
+func CreateTestList(size int) LinkedList {
+	ll := LinkedList{}
+
+	if size > 0 {
+		for i := 0; i < size; i++ {
+			ll.Insert(i)
+		}
+	} else {
+		for i := (size * -1) - 1; i >= 0; i-- {
+			ll.Insert(i)
+		}
+	}
+
+	return ll
+}

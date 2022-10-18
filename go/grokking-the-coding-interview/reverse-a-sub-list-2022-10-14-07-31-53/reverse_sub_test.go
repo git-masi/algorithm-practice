@@ -19,27 +19,27 @@ func TestReverseSub(t *testing.T) {
 	})
 
 	t.Run("It should not mutate a list with size < 2", func(t *testing.T) {
-		ll := createTestList(1)
+		ll := linkedlist.CreateTestList(1)
 
 		reverseSub(&ll, 0, 1)
 
-		want := createTestList(-1)
+		want := linkedlist.CreateTestList(-1)
 
 		assertListsAreEqual(t, ll, want)
 	})
 
 	t.Run("It should reverse the head and the tail", func(t *testing.T) {
-		ll := createTestList(2)
+		ll := linkedlist.CreateTestList(2)
 
 		reverseSub(&ll, 0, 1)
 
-		want := createTestList(-2)
+		want := linkedlist.CreateTestList(-2)
 
 		assertListsAreEqual(t, ll, want)
 	})
 
 	t.Run("It should reverse the second and third nodes", func(t *testing.T) {
-		ll := createTestList(4)
+		ll := linkedlist.CreateTestList(4)
 
 		reverseSub(&ll, 1, 2)
 
@@ -51,22 +51,6 @@ func TestReverseSub(t *testing.T) {
 
 		assertListsAreEqual(t, ll, want)
 	})
-}
-
-func createTestList(size int) linkedlist.LinkedList {
-	ll := linkedlist.LinkedList{}
-
-	if size > 0 {
-		for i := 0; i < size; i++ {
-			ll.Insert(i)
-		}
-	} else {
-		for i := (size * -1) - 1; i >= 0; i-- {
-			ll.Insert(i)
-		}
-	}
-
-	return ll
 }
 
 func assertListsAreEqual(t *testing.T, got, want linkedlist.LinkedList) {
