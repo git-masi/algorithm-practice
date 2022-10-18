@@ -1,18 +1,18 @@
 package linkedlist
 
-type LinkedListNode struct {
+type Node struct {
 	Value int
-	Next  *LinkedListNode
+	Next  *Node
 }
 
 type LinkedList struct {
-	Head *LinkedListNode
-	Tail *LinkedListNode
+	Head *Node
+	Tail *Node
 	Size int
 }
 
 func (ll *LinkedList) Insert(v int) {
-	node := &LinkedListNode{Value: v}
+	node := &Node{Value: v}
 
 	if ll.Head == nil {
 		ll.Head = node

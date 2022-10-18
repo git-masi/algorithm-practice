@@ -7,7 +7,7 @@ import (
 
 func TestLinkedListNode(t *testing.T) {
 	t.Run("Properties should have zero values by default", func(t *testing.T) {
-		node := LinkedListNode{}
+		node := Node{}
 
 		assertNodeValue(t, node, 0)
 
@@ -102,7 +102,7 @@ func TestLinkedListToSlice(t *testing.T) {
 	})
 }
 
-func assertNodeValue(t *testing.T, n LinkedListNode, v int) {
+func assertNodeValue(t *testing.T, n Node, v int) {
 	if n.Value != v {
 		t.Errorf("got %d, want %d", n.Value, v)
 	}

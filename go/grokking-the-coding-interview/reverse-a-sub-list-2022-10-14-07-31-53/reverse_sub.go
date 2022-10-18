@@ -7,9 +7,9 @@ func reverseSub(ll *linkedlist.LinkedList, p, q int) {
 		return
 	}
 
-	var prev *linkedlist.LinkedListNode
-	var beforeSubList *linkedlist.LinkedListNode
-	var subListStart *linkedlist.LinkedListNode
+	var prev *linkedlist.Node
+	var beforeSubList *linkedlist.Node
+	var subListStart *linkedlist.Node
 	curr := ll.Head
 
 	for {

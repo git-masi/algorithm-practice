@@ -7,7 +7,7 @@ func reverse(ll *linkedlist.LinkedList) {
 		return
 	}
 
-	var prev *linkedlist.LinkedListNode
+	var prev *linkedlist.Node
 	curr := ll.Head
 
 	ll.Tail = curr
