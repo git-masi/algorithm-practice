@@ -164,7 +164,7 @@ func TestLinkedListShift(t *testing.T) {
 		}
 	})
 
-	t.Run("I should remove the head and the list should be empty", func(t *testing.T) {
+	t.Run("It should remove the head and the list should be empty", func(t *testing.T) {
 		ll := LinkedList[int]{}
 
 		ll.Push(42)
@@ -178,6 +178,18 @@ func TestLinkedListShift(t *testing.T) {
 
 		if ll.Head != nil || ll.Tail != nil {
 			t.Error("Expected head and tail to both be 'nil'")
+		}
+	})
+
+	t.Run("It should decrement the size", func(t *testing.T) {
+		ll := LinkedList[int]{}
+		want := 0
+
+		ll.Push(42)
+		ll.Shift()
+
+		if ll.Size != want {
+			t.Errorf("got %d, want %d", ll.Size, want)
 		}
 	})
 

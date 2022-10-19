@@ -54,6 +54,8 @@ func (ll *LinkedList[T]) Shift() *Node[T] {
 	head.Next = nil
 	ll.Head = next
 
+	ll.Size--
+
 	return head
 }
 
