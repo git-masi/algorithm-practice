@@ -1,18 +1,18 @@
 package linkedlist
 
-type Node struct {
-	Value int
-	Next  *Node
+type Node[T any] struct {
+	Value T
+	Next  *Node[T]
 }
 
-type LinkedList struct {
-	Head *Node
-	Tail *Node
+type LinkedList[T any] struct {
+	Head *Node[T]
+	Tail *Node[T]
 	Size int
 }
 
-func (ll *LinkedList) Insert(v int) {
-	node := &Node{Value: v}
+func (ll *LinkedList[T]) Insert(v T) {
+	node := &Node[T]{Value: v}
 
 	if ll.Head == nil {
 		ll.Head = node
@@ -25,7 +25,7 @@ func (ll *LinkedList) Insert(v int) {
 	ll.Size++
 }
 
-func (ll *LinkedList) RemoveHead() *Node {
+func (ll *LinkedList[T]) RemoveHead() *Node[T] {
 	if ll.Head == nil {
 		return nil
 	}
@@ -43,8 +43,8 @@ func (ll *LinkedList) RemoveHead() *Node {
 	return head
 }
 
-func (ll LinkedList) ToSlice() []int {
-	values := []int{}
+func (ll LinkedList[T]) ToSlice() []T {
+	values := []T{}
 
 	curr := ll.Head
 
@@ -61,8 +61,8 @@ func (ll LinkedList) ToSlice() []int {
 	return values
 }
 
-func CreateTestList(size int) LinkedList {
-	ll := LinkedList{}
+func CreateTestList(size int) LinkedList[int] {
+	ll := LinkedList[int]{}
 
 	if size > 0 {
 		for i := 0; i < size; i++ {

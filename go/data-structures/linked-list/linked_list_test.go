@@ -7,7 +7,7 @@ import (
 
 func TestLinkedListNode(t *testing.T) {
 	t.Run("Properties should have zero values by default", func(t *testing.T) {
-		node := Node{}
+		node := Node[int]{}
 
 		assertNodeValue(t, node, 0)
 
@@ -19,7 +19,7 @@ func TestLinkedListNode(t *testing.T) {
 
 func TestLinkedList(t *testing.T) {
 	t.Run("It should have zero values by default", func(t *testing.T) {
-		l := LinkedList{}
+		l := LinkedList[int]{}
 		size := 0
 
 		if l.Head != nil {
@@ -36,7 +36,7 @@ func TestLinkedList(t *testing.T) {
 
 func TestLinkedListInsert(t *testing.T) {
 	t.Run("It should add a new `head` when the first node is inserted", func(t *testing.T) {
-		l := LinkedList{}
+		l := LinkedList[int]{}
 		head := 42
 		size := 1
 		l.Insert(head)
@@ -49,7 +49,7 @@ func TestLinkedListInsert(t *testing.T) {
 	})
 
 	t.Run("It should add a new `tail` when the second node is inserted", func(t *testing.T) {
-		l := LinkedList{}
+		l := LinkedList[int]{}
 		head := 42
 		tail := 1337
 		size := 2
@@ -64,7 +64,7 @@ func TestLinkedListInsert(t *testing.T) {
 	})
 
 	t.Run("All nodes should be reachable from the head", func(t *testing.T) {
-		l := LinkedList{}
+		l := LinkedList[int]{}
 		head := 42
 		next := 9001
 		tail := 1337
@@ -88,7 +88,7 @@ func TestLinkedListInsert(t *testing.T) {
 func TestLinkedListToSlice(t *testing.T) {
 	t.Run("It should return a slice of linked list values", func(t *testing.T) {
 		want := []int{1, 2, 3, 4}
-		ll := LinkedList{}
+		ll := LinkedList[int]{}
 
 		for _, v := range want {
 			ll.Insert(v)
@@ -104,7 +104,7 @@ func TestLinkedListToSlice(t *testing.T) {
 
 func TestLinkedListRemoveHead(t *testing.T) {
 	t.Run("It should not remove the head of an empty list", func(t *testing.T) {
-		ll := LinkedList{}
+		ll := LinkedList[int]{}
 
 		ll.RemoveHead()
 
@@ -114,7 +114,7 @@ func TestLinkedListRemoveHead(t *testing.T) {
 	})
 
 	t.Run("I should remove the head and the list should be empty", func(t *testing.T) {
-		ll := LinkedList{}
+		ll := LinkedList[int]{}
 
 		ll.Insert(42)
 
@@ -131,7 +131,7 @@ func TestLinkedListRemoveHead(t *testing.T) {
 	})
 
 	t.Run("It should remove the head and the new head and tail should be equal", func(t *testing.T) {
-		ll := LinkedList{}
+		ll := LinkedList[int]{}
 		tail := 1337
 
 		ll.Insert(42)
@@ -154,7 +154,7 @@ func TestLinkedListRemoveHead(t *testing.T) {
 	})
 
 	t.Run("It should remove the head and promote a new head", func(t *testing.T) {
-		ll := LinkedList{}
+		ll := LinkedList[int]{}
 		head := 42
 		next := 9001
 		tail := 1337
@@ -180,13 +180,13 @@ func TestLinkedListRemoveHead(t *testing.T) {
 	})
 }
 
-func assertNodeValue(t *testing.T, n Node, v int) {
+func assertNodeValue(t *testing.T, n Node[int], v int) {
 	if n.Value != v {
 		t.Errorf("got %d, want %d", n.Value, v)
 	}
 }
 
-func assertSize(t *testing.T, l LinkedList, s int) {
+func assertSize(t *testing.T, l LinkedList[int], s int) {
 	if l.Size != s {
 		t.Errorf("got %d, want %d", l.Size, s)
 	}
