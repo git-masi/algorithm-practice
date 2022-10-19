@@ -34,7 +34,7 @@ func TestLinkedList(t *testing.T) {
 	})
 }
 
-func TestLinkedListInsert(t *testing.T) {
+func TestLinkedListPush(t *testing.T) {
 	t.Run("It should add a new `head` when the first node is inserted", func(t *testing.T) {
 		l := LinkedList[int]{}
 		head := 42
@@ -102,7 +102,7 @@ func TestLinkedListToSlice(t *testing.T) {
 	})
 }
 
-func TestLinkedListRemoveHead(t *testing.T) {
+func TestLinkedListShift(t *testing.T) {
 	t.Run("It should not remove the head of an empty list", func(t *testing.T) {
 		ll := LinkedList[int]{}
 
