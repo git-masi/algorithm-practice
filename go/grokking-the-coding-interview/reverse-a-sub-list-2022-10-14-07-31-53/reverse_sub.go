@@ -2,14 +2,14 @@ package main
 
 import linkedlist "github.com/git-masi/algorithm-practice/go/data-structures/linked-list"
 
-func reverseSub(ll *linkedlist.LinkedList, p, q int) {
+func reverseSub(ll *linkedlist.LinkedList[int], p, q int) {
 	if ll.Size < 2 || p == q {
 		return
 	}
 
-	var prev *linkedlist.Node
-	var beforeSubList *linkedlist.Node
-	var subListStart *linkedlist.Node
+	var prev *linkedlist.Node[int]
+	var beforeSubList *linkedlist.Node[int]
+	var subListStart *linkedlist.Node[int]
 	curr := ll.Head
 
 	for {

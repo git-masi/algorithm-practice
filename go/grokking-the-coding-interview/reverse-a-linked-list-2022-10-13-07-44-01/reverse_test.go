@@ -39,8 +39,8 @@ func TestReverse(t *testing.T) {
 	})
 }
 
-func createTestList(size int) linkedlist.LinkedList {
-	ll := linkedlist.LinkedList{}
+func createTestList(size int) linkedlist.LinkedList[int] {
+	ll := linkedlist.LinkedList[int]{}
 
 	if size > 0 {
 		for i := 0; i < size; i++ {
@@ -55,7 +55,7 @@ func createTestList(size int) linkedlist.LinkedList {
 	return ll
 }
 
-func assertListsAreEqual(t *testing.T, got, want linkedlist.LinkedList) {
+func assertListsAreEqual(t *testing.T, got, want linkedlist.LinkedList[int]) {
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got head %v tail %v, want head %v tail %v", got.Head, got.Tail, want.Head, want.Tail)
 	}

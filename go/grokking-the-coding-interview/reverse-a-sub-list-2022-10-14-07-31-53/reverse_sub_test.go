@@ -9,11 +9,11 @@ import (
 
 func TestReverseSub(t *testing.T) {
 	t.Run("It should not mutate an empty list", func(t *testing.T) {
-		ll := linkedlist.LinkedList{}
+		ll := linkedlist.LinkedList[int]{}
 
 		reverseSub(&ll, 0, 1)
 
-		want := linkedlist.LinkedList{}
+		want := linkedlist.LinkedList[int]{}
 
 		assertListsAreEqual(t, ll, want)
 	})
@@ -43,7 +43,7 @@ func TestReverseSub(t *testing.T) {
 
 		reverseSub(&ll, 1, 2)
 
-		want := linkedlist.LinkedList{}
+		want := linkedlist.LinkedList[int]{}
 		want.Insert(0)
 		want.Insert(2)
 		want.Insert(1)
@@ -53,7 +53,7 @@ func TestReverseSub(t *testing.T) {
 	})
 }
 
-func assertListsAreEqual(t *testing.T, got, want linkedlist.LinkedList) {
+func assertListsAreEqual(t *testing.T, got, want linkedlist.LinkedList[int]) {
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got values: %v, want values: %v", got.ToSlice(), want.ToSlice())
 	}

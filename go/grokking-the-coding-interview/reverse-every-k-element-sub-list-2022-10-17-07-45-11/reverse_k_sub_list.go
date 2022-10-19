@@ -2,16 +2,16 @@ package main
 
 import linkedlist "github.com/git-masi/algorithm-practice/go/data-structures/linked-list"
 
-func reverseSubList(head *linkedlist.Node, k int) *linkedlist.Node {
+func reverseSubList(head *linkedlist.Node[int], k int) *linkedlist.Node[int] {
 	if k < 2 || head == nil {
 		return head
 	}
 
-	var prev *linkedlist.Node
+	var prev *linkedlist.Node[int]
 	curr := head
 
 	for {
-		var next *linkedlist.Node
+		var next *linkedlist.Node[int]
 		lastNodeOfPrevSubList := prev
 		lastNodeOfSubList := curr
 		count := 0
