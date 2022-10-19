@@ -25,6 +25,20 @@ func (ll *LinkedList[T]) Push(v T) {
 	ll.Size++
 }
 
+func (ll *LinkedList[T]) Unshift(v T) {
+	node := &Node[T]{Value: v}
+
+	if ll.Head == nil {
+		ll.Head = node
+		ll.Tail = node
+	} else {
+		node.Next = ll.Head
+		ll.Head = node
+	}
+
+	ll.Size++
+}
+
 func (ll *LinkedList[T]) Shift() *Node[T] {
 	if ll.Head == nil {
 		return nil

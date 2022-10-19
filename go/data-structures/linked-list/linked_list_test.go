@@ -85,6 +85,57 @@ func TestLinkedListPush(t *testing.T) {
 	})
 }
 
+func TestLinkedListUnshift(t *testing.T) {
+	t.Run("It should add a new head to an empty linked list", func(t *testing.T) {
+		ll := LinkedList[int]{}
+		head := 42
+		size := 1
+		ll.Unshift(head)
+
+		assertNodeValue(t, *ll.Head, head)
+
+		assertNodeValue(t, *ll.Tail, head)
+
+		assertSize(t, ll, size)
+	})
+
+	t.Run("It should add a new head", func(t *testing.T) {
+		ll := LinkedList[int]{}
+		head := 42
+		tail := 9001
+		size := 2
+		ll.Unshift(tail)
+		ll.Unshift(head)
+
+		assertNodeValue(t, *ll.Head, head)
+
+		assertNodeValue(t, *ll.Tail, tail)
+
+		assertSize(t, ll, size)
+	})
+
+	t.Run("All nodes should be reachable from the head", func(t *testing.T) {
+		ll := LinkedList[int]{}
+		head := 42
+		next := 9001
+		tail := 1337
+		size := 3
+		ll.Unshift(tail)
+		ll.Unshift(next)
+		ll.Unshift(head)
+
+		assertNodeValue(t, *ll.Head, head)
+
+		assertNodeValue(t, *ll.Head.Next, next)
+
+		assertNodeValue(t, *ll.Head.Next.Next, tail)
+
+		assertNodeValue(t, *ll.Tail, tail)
+
+		assertSize(t, ll, size)
+	})
+}
+
 func TestLinkedListToSlice(t *testing.T) {
 	t.Run("It should return a slice of linked list values", func(t *testing.T) {
 		want := []int{1, 2, 3, 4}
