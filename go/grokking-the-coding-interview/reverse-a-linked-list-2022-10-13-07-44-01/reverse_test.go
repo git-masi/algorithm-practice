@@ -44,11 +44,11 @@ func createTestList(size int) linkedlist.LinkedList[int] {
 
 	if size > 0 {
 		for i := 0; i < size; i++ {
-			ll.Insert(i)
+			ll.Push(i)
 		}
 	} else {
 		for i := (size * -1) - 1; i >= 0; i-- {
-			ll.Insert(i)
+			ll.Push(i)
 		}
 	}
 

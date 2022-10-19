@@ -44,10 +44,10 @@ func TestReverseSub(t *testing.T) {
 		reverseSub(&ll, 1, 2)
 
 		want := linkedlist.LinkedList[int]{}
-		want.Insert(0)
-		want.Insert(2)
-		want.Insert(1)
-		want.Insert(3)
+		want.Push(0)
+		want.Push(2)
+		want.Push(1)
+		want.Push(3)
 
 		assertListsAreEqual(t, ll, want)
 	})

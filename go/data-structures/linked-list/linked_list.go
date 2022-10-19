@@ -11,7 +11,7 @@ type LinkedList[T any] struct {
 	Size int
 }
 
-func (ll *LinkedList[T]) Insert(v T) {
+func (ll *LinkedList[T]) Push(v T) {
 	node := &Node[T]{Value: v}
 
 	if ll.Head == nil {
@@ -25,7 +25,7 @@ func (ll *LinkedList[T]) Insert(v T) {
 	ll.Size++
 }
 
-func (ll *LinkedList[T]) RemoveHead() *Node[T] {
+func (ll *LinkedList[T]) Shift() *Node[T] {
 	if ll.Head == nil {
 		return nil
 	}
@@ -66,11 +66,11 @@ func CreateTestList(size int) LinkedList[int] {
 
 	if size > 0 {
 		for i := 0; i < size; i++ {
-			ll.Insert(i)
+			ll.Push(i)
 		}
 	} else {
 		for i := (size * -1) - 1; i >= 0; i-- {
-			ll.Insert(i)
+			ll.Push(i)
 		}
 	}
 

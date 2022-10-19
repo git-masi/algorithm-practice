@@ -39,7 +39,7 @@ func TestLinkedListInsert(t *testing.T) {
 		l := LinkedList[int]{}
 		head := 42
 		size := 1
-		l.Insert(head)
+		l.Push(head)
 
 		assertNodeValue(t, *l.Head, head)
 
@@ -53,8 +53,8 @@ func TestLinkedListInsert(t *testing.T) {
 		head := 42
 		tail := 1337
 		size := 2
-		l.Insert(head)
-		l.Insert(tail)
+		l.Push(head)
+		l.Push(tail)
 
 		assertNodeValue(t, *l.Head, head)
 
@@ -69,9 +69,9 @@ func TestLinkedListInsert(t *testing.T) {
 		next := 9001
 		tail := 1337
 		size := 3
-		l.Insert(head)
-		l.Insert(next)
-		l.Insert(tail)
+		l.Push(head)
+		l.Push(next)
+		l.Push(tail)
 
 		assertNodeValue(t, *l.Head, head)
 
@@ -91,7 +91,7 @@ func TestLinkedListToSlice(t *testing.T) {
 		ll := LinkedList[int]{}
 
 		for _, v := range want {
-			ll.Insert(v)
+			ll.Push(v)
 		}
 
 		got := ll.ToSlice()
@@ -106,7 +106,7 @@ func TestLinkedListRemoveHead(t *testing.T) {
 	t.Run("It should not remove the head of an empty list", func(t *testing.T) {
 		ll := LinkedList[int]{}
 
-		ll.RemoveHead()
+		ll.Shift()
 
 		if ll.Head != nil {
 			t.Error("An empty list should be unchanged")
@@ -116,10 +116,10 @@ func TestLinkedListRemoveHead(t *testing.T) {
 	t.Run("I should remove the head and the list should be empty", func(t *testing.T) {
 		ll := LinkedList[int]{}
 
-		ll.Insert(42)
+		ll.Push(42)
 
 		want := ll.Head
-		got := ll.RemoveHead()
+		got := ll.Shift()
 
 		if got != want {
 			t.Errorf("got %v, want %v", got, want)
@@ -134,11 +134,11 @@ func TestLinkedListRemoveHead(t *testing.T) {
 		ll := LinkedList[int]{}
 		tail := 1337
 
-		ll.Insert(42)
-		ll.Insert(tail)
+		ll.Push(42)
+		ll.Push(tail)
 
 		want := ll.Head
-		got := ll.RemoveHead()
+		got := ll.Shift()
 
 		if got.Next != nil {
 			t.Errorf("Expected the Next value to be 'nil'")
@@ -159,12 +159,12 @@ func TestLinkedListRemoveHead(t *testing.T) {
 		next := 9001
 		tail := 1337
 
-		ll.Insert(head)
-		ll.Insert(next)
-		ll.Insert(tail)
+		ll.Push(head)
+		ll.Push(next)
+		ll.Push(tail)
 
 		want := ll.Head
-		got := ll.RemoveHead()
+		got := ll.Shift()
 
 		if got.Next != nil {
 			t.Errorf("Expected the Next value to be 'nil'")
