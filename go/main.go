@@ -60,6 +60,10 @@ import "testing"
 func Test(t *testing.T) {
 	t.Run("", func(t *testing.T) {
 		//
+
+		// if got != want {
+			// t.Errorf("got %v want %v", got, want)
+		// }
 	})
 }
 `),
