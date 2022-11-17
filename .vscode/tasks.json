@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "compile typescript and watch for changes",
+      "type": "npm",
+      "script": "tsc:watch",
+      "options": {
+        "cwd": "${workspaceFolder}/ts"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "run jest and watch for changes",
+      "type": "npm",
+      "script": "test:watch",
+      "options": {
+        "cwd": "${workspaceFolder}/ts"
+      },
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "compile typescript and run tests",
+      "dependsOn": [
+        "compile typescript and watch for changes",
+        "run jest and watch for changes"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
